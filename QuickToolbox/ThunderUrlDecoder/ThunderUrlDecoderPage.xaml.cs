@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,19 @@ namespace Jiuyong
 		public ThunderUrlDecoderPage()
 		{
 			InitializeComponent();
+		}
+
+		private void Decoder_Executed(object sender, ExecutedRoutedEventArgs e)
+		{
+			var sr = new StringReader(inputBox.Text);
+			var sb = new StringBuilder();
+			for (var s = ""; null != s;s = sr.ReadLine())
+			{
+				var bs = Convert.FromBase64String(s);
+				var l = System.Text.Encoding.UTF8.GetString(bs);
+				sb.AppendLine(l);
+			}
+			outputBox.Text = sb.ToString();
 		}
 	}
 }

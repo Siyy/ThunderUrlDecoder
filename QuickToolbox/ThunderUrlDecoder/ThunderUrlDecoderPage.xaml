@@ -7,8 +7,19 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="ThunderUrlDecoderPage">
+	<Page.CommandBindings>
+		<CommandBinding Command="MediaCommands.Play" Executed="Decoder_Executed"></CommandBinding>
+	</Page.CommandBindings>
+	<Grid>
+		<Grid Margin="3">
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			<TextBox x:Name="inputBox" TextWrapping="Wrap" Text="TextBox" Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" IsManipulationEnabled="True"/>
+			<TextBox x:Name="outputBox" TextWrapping="Wrap" Text="TextBox" Grid.Row="9" Margin="0,1,0,0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" IsManipulationEnabled="True"/>
+			<Button Content="转换" VerticalAlignment="Center" Width="75" Grid.RowSpan="9" HorizontalAlignment="Center" Command="MediaCommands.Play"/>
+		</Grid>
 
-    <Grid>
-        
-    </Grid>
+	</Grid>
 </Page>
