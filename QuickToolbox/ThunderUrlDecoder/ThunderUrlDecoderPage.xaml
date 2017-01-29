@@ -16,8 +16,8 @@
 				<RowDefinition/>
 				<RowDefinition/>
 			</Grid.RowDefinitions>
-			<TextBox x:Name="inputBox" TextWrapping="Wrap" Text="TextBox" Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" IsManipulationEnabled="True"/>
-			<TextBox x:Name="outputBox" TextWrapping="Wrap" Text="TextBox" Grid.Row="9" Margin="0,1,0,0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" IsManipulationEnabled="True"/>
+			<TextBox TextWrapping="Wrap" Text="{Binding Input}" Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" AcceptsReturn="True"/>
+			<TextBox TextWrapping="Wrap" Text="{Binding Output}" Grid.Row="9" Margin="0,1,0,0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" AcceptsReturn="True" />
 			<Button Content="转换" VerticalAlignment="Center" Width="75" Grid.RowSpan="9" HorizontalAlignment="Center" Command="MediaCommands.Play"/>
 		</Grid>
 

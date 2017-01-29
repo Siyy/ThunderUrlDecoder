@@ -24,19 +24,36 @@ namespace Jiuyong
 		public ThunderUrlDecoderPage()
 		{
 			InitializeComponent();
+			Loaded += Page_Loaded;
+		}
+		dynamic VM => DataContext;
+
+		private void Page_Loaded(object sender, RoutedEventArgs e)
+		{
+			DataContext = new System.Dynamic.ExpandoObject();
+			VM.Input = "支持多行迅雷地址。";
+			VM.Output = "输出多行解码后地址。";
 		}
 
 		private void Decoder_Executed(object sender, ExecutedRoutedEventArgs e)
 		{
-			var sr = new StringReader(inputBox.Text);
+			var sr = new StringReader(VM.Input);
 			var sb = new StringBuilder();
-			for (var s = ""; null != s;s = sr.ReadLine())
+			try
 			{
-				var bs = Convert.FromBase64String(s);
-				var l = System.Text.Encoding.UTF8.GetString(bs);
-				sb.AppendLine(l);
+				for (var s = ""; null != s; s = sr.ReadLine())
+				{
+					var bs = Convert.FromBase64String(s);
+					var l = System.Text.Encoding.UTF8.GetString(bs);
+					sb.AppendLine(l);
+				}
+				VM.Output = sb.ToString();
 			}
-			outputBox.Text = sb.ToString();
+			catch (Exception err)
+			{
+				VM.Output = err.Message;
+			}
+
 		}
 	}
 }
