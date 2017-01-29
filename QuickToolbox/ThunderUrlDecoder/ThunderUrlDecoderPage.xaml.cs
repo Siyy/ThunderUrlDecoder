@@ -25,7 +25,16 @@ namespace Jiuyong
 		{
 			InitializeComponent();
 			Loaded += Page_Loaded;
+			//SizeChanged += Page_SizeChanged;
 		}
+
+		//private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
+		//{
+		//	实际效果很差：既没有达到设计目标（保持夹缩的区域正中圆形不变），
+		//	却带来了无法避免输入输出文本被圆心按钮遮挡的问题（过大、过小窗体的极端情况下更明显）。
+		//	Pinch.AspectRatio = MainPanel.ActualHeight/(double)MainPanel.ActualWidth;
+		//}
+
 		dynamic VM => DataContext;
 
 		private void Page_Loaded(object sender, RoutedEventArgs e)
